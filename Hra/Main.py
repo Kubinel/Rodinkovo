@@ -4,6 +4,40 @@ import random
 
 class Main:
     def __init__(self):
+        self.Choose_Character()
+        print(f"Welcome {self.player.name} to the game!")
+
+        enemy = None
+        defeated_enemies = 0
+        while True:
+            if enemy is None:
+                choice = random.randint(1, 4)
+                if choice == 1:
+                    enemy = Enemy.Zombie()
+                elif choice == 2:
+                    enemy = Enemy.Skeleton()
+                elif choice == 3:
+                    enemy = Enemy.Police()
+                elif choice == 4:
+                    enemy = Enemy.Ork()
+        
+                print(f"A wild {enemy.name} appears!")
+
+            self.player.deal_damage(enemy)
+
+            if enemy.hp <= 0:
+                print(f"You defeated the {enemy.name}!")
+                defeated_enemies += 1
+                enemy = None
+            else:
+                enemy.deal_damage(self.player)
+            if self.player.hp <= 0:
+                print(f"You were defeated by the {enemy.name}. Game over!")
+                print(f"You defeated {defeated_enemies} enemies.")
+                break
+            
+    
+    def Choose_Character(self):
         name = input("Enter your name: ")
         print("What character do you want to play as?")
         print("1. Mage")
@@ -22,18 +56,8 @@ class Main:
         else:
             print("Invalid choice. Defaulting to Mage.")
             self.player = Player.Mage(name)
-
-        while True:
-            choice = random.randint(1, 4)
-            if choice == 1:
-                enemy = Enemy.Zombie()
-            elif choice == 2:
-                enemy = Enemy.Skeleton()
-            elif choice == 3:
-                enemy = Enemy.Police()
-            elif choice == 4:
-                enemy = Enemy.Ork()
         
+
 
 if __name__ == "__main__":
     Main()

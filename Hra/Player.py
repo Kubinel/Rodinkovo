@@ -6,6 +6,7 @@ class Character:
         self.defense = defense
 
     def deal_damage(self, enemy):
+        print(f"{self.name} attacks {enemy.name} for {self.attack} damage!")
         enemy.take_damage(self.attack)
 
     def take_damage(self, damage):
