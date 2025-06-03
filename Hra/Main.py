@@ -10,6 +10,7 @@ class Main:
         enemy = None
         defeated_enemies = 0
         while True:
+            self.player.show_stats() #TUUUUUUUUUUUDUDUDU MAX VERSTAPEN
             if enemy is None:
                 choice = random.randint(1, 4)
                 if choice == 1:
@@ -22,7 +23,8 @@ class Main:
                     enemy = Enemy.Ork()
         
                 print(f"A wild {enemy.name} appears!")
-
+            enemy.show_stats() #TUUUUUUUUUUU
+            print()
             self.player.deal_damage(enemy)
 
             if enemy.hp <= 0:
@@ -57,7 +59,6 @@ class Main:
             print("Invalid choice. Defaulting to Mage.")
             self.player = Player.Mage(name)
         
-
 
 if __name__ == "__main__":
     Main()
