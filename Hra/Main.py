@@ -4,13 +4,15 @@ import random
 
 class Main:
     def __init__(self):
-        self.Choose_Character()
+        self.player = self.Choose_Character()
         print(f"Welcome {self.player.name} to the game!")
+
+        
 
         enemy = None
         defeated_enemies = 0
         while True:
-            self.player.show_stats() #TUUUUUUUUUUUDUDUDU MAX VERSTAPEN
+            self.player.show_stats() 
             if enemy is None:
                 choice = random.randint(1, 4)
                 if choice == 1:
@@ -23,7 +25,7 @@ class Main:
                     enemy = Enemy.Ork()
         
                 print(f"A wild {enemy.name} appears!")
-            enemy.show_stats() #TUUUUUUUUUUU
+            enemy.show_stats() 
             print()
             self.player.deal_damage(enemy)
 
@@ -48,16 +50,16 @@ class Main:
         print("4. Warrior")
         choice = input("Enter your choice (1-4): ")
         if choice == "1":
-            self.player = Player.Mage(name)
+            return Player.Mage(name)
         elif choice == "2":
-            self.player = Player.Assasin(name)
+            return Player.Assasin(name)
         elif choice == "3":
-            self.player = Player.Ranger(name)
+            return Player.Ranger(name)
         elif choice == "4":
-            self.player = Player.Warrior(name)
-        else:
-            print("Invalid choice. Defaulting to Mage.")
-            self.player = Player.Mage(name)
+            return Player.Warrior(name)
+        
+        print("Invalid choice. Defaulting to Mage.")
+        return Player.Mage(name)
         
 
 if __name__ == "__main__":
