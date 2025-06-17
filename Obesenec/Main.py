@@ -3,7 +3,9 @@ from random import choice
 
 class Main:
     def __init__(self):
-        self.kreslic = Kreslic()
+        slova = ["policajt", "python", "programko", "obesenec", "slovo", "hokej", "futbal", "roblox", "poki", "minecraft"]
+        slovo = choice(slova)
+        self.kreslic = Kreslic(slovo)
     
 
 if __name__ == "__main__":

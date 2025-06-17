@@ -13,8 +13,11 @@ class Casti:
 
 
     def nakresli_policka(self):
+        policka = []
         offset = 600 - (len(self.slovo)+2) * 50
         for i in range(len(self.slovo)):
             x1 = offset / 2 + 10 +(i * 50)
             x2 = x1 + 20
-            self.canvas.create_rectangle(x1,500,x2,501)
+            policko = self.canvas.create_rectangle(x1,500,x2,501)
+            policka.append(policko)
+        return policka
